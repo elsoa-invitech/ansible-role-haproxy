@@ -4,6 +4,14 @@ haproxy_chroot: /var/lib/haproxy
 haproxy_user: haproxy
 haproxy_group: haproxy
 
+haproxy_stats_enabled: true
+haproxy_stats_user: stats
+haproxy_stats_password: password
+haproxy_stats_uri: /haproxy
+haproxy_stats_params:
+  - stats refresh 5s
+  - stats hide-version
+
 # Frontend settings.
 haproxy_frontend_name: 'hafrontend'
 haproxy_frontend_bind_address: '*'

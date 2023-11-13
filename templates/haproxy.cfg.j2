@@ -102,3 +102,14 @@ backend {{ backend.name }}
 {% endfor %}
 
 
+{% if haproxy_stats_enabled %}
+listen stats
+  bind *:1939
+  mode http
+  stats enable
+  stats auth {{haproxy_stats_user}}:{{haproxy_stats_password}}
+  stats uri {{haproxy_stats_uri}}
+{% for stats in haproxy_stats_params %}
+  {{stats}}
+{% endfor %}
+{% endif %}
