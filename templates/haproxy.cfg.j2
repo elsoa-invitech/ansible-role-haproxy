@@ -44,6 +44,9 @@ frontend {{ frontend.name }}
 {% for tcp_request in frontend.tcp_requests %}
     tcp-request {{ tcp_request.action }} {{ tcp_request.criteria }}
 {% endfor %}
+{% for http_request in frontend.http_requests %}
+    http-request {{ http_request.action }} {{ http_request.criteria }}
+{% endfor %}
 {% endif %}
 {% if frontend.default_backend is defined %}
     default_backend {{ frontend.default_backend }}
